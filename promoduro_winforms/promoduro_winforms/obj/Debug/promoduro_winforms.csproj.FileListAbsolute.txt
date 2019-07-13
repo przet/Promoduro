@@ -1,0 +1,10 @@
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\bin\Debug\promoduro_winforms.exe.config
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\bin\Debug\promoduro_winforms.exe
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\bin\Debug\promoduro_winforms.pdb
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Debug\promoduro_winforms.csprojAssemblyReference.cache
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Debug\promoduro_winforms.Properties.Resources.resources
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Debug\promoduro_winforms.csproj.GenerateResource.cache
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Debug\promoduro_winforms.csproj.CoreCompileInputs.cache
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Debug\promoduro_winforms.exe
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Debug\promoduro_winforms.pdb
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Debug\promoduro_winforms.Form1.resources
