@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.starttimer_btn = new System.Windows.Forms.Button();
             this.resettimer_btn = new System.Windows.Forms.Button();
-            this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pause_btn = new System.Windows.Forms.Button();
+            this.timetextbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // starttimer_btn
@@ -54,16 +54,7 @@
             this.resettimer_btn.TabIndex = 1;
             this.resettimer_btn.Text = "Reset Timer";
             this.resettimer_btn.UseVisualStyleBackColor = true;
-            this.resettimer_btn.Click += new System.EventHandler(this.resettime_btn_Click);
-            // 
-            // maskedTextBox
-            // 
-            this.maskedTextBox.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.maskedTextBox.Location = new System.Drawing.Point(341, 292);
-            this.maskedTextBox.Name = "maskedTextBox";
-            this.maskedTextBox.Size = new System.Drawing.Size(100, 29);
-            this.maskedTextBox.TabIndex = 2;
-            this.maskedTextBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.MaskedTextBox1_MaskInputRejected);
+            this.resettimer_btn.Click += new System.EventHandler(this.Resettime_btn_Click);
             // 
             // timer1
             // 
@@ -78,7 +69,18 @@
             this.pause_btn.TabIndex = 3;
             this.pause_btn.Text = "Pause Timer";
             this.pause_btn.UseVisualStyleBackColor = true;
-            this.pause_btn.Click += new System.EventHandler(this.pause_btn_Click);
+            this.pause_btn.Click += new System.EventHandler(this.Pause_btn_Click);
+            // 
+            // timetextbox
+            // 
+            this.timetextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timetextbox.Location = new System.Drawing.Point(199, 229);
+            this.timetextbox.Multiline = true;
+            this.timetextbox.Name = "timetextbox";
+            this.timetextbox.Size = new System.Drawing.Size(400, 175);
+            this.timetextbox.TabIndex = 5;
+            this.timetextbox.Text = "00:00";
+            this.timetextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
@@ -87,8 +89,8 @@
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.BackgroundImage = global::promoduro_winforms.Properties.Resources.istockphoto_466175630_612x612;
             this.ClientSize = new System.Drawing.Size(840, 837);
+            this.Controls.Add(this.timetextbox);
             this.Controls.Add(this.pause_btn);
-            this.Controls.Add(this.maskedTextBox);
             this.Controls.Add(this.resettimer_btn);
             this.Controls.Add(this.starttimer_btn);
             this.Name = "Form1";
@@ -103,9 +105,9 @@
 
         private System.Windows.Forms.Button starttimer_btn;
         private System.Windows.Forms.Button resettimer_btn;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button pause_btn;
+        private System.Windows.Forms.TextBox timetextbox;
     }
 }
 

@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29025.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "promoduro_winforms", "promoduro_winforms\promoduro_winforms.csproj", "{8120C86C-7612-49DE-9623-29DBBDFB5658}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountdownTimer", "CountdownTimer\CountdownTimer.csproj", "{C80E4EBE-EDC2-4615-BCD0-79ABE76784BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8120C86C-7612-49DE-9623-29DBBDFB5658}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8120C86C-7612-49DE-9623-29DBBDFB5658}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8120C86C-7612-49DE-9623-29DBBDFB5658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C80E4EBE-EDC2-4615-BCD0-79ABE76784BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C80E4EBE-EDC2-4615-BCD0-79ABE76784BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C80E4EBE-EDC2-4615-BCD0-79ABE76784BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C80E4EBE-EDC2-4615-BCD0-79ABE76784BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

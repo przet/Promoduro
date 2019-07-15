@@ -1,5 +1,8 @@
-﻿// Special thanks to Geoff Stratton, who wrote a countime timer and posted his code:
+﻿// Thanks to Geoff Stratton:
 // https://www.geoffstratton.com/cnet-countdown-timer
+//
+// Also, 
+// https://docs.microsoft.com/en-us/visualstudio/ide/step-3-add-a-countdown-timer?view=vs-2019
 //
 using System;
 using System.Collections.Generic;
@@ -15,28 +18,28 @@ namespace promoduro_winforms
 {
     public partial class Form1 : Form
     {
-        private int TimeLeft;
+        private long TimeLeft;
         public Form1()
         {
             InitializeComponent();
-            maskedTextBox.Text = "25:00";
-            timer1.Interval = 1000;
+            timetextbox.Text = "25:00";
+            timer1 = new Timer { Interval = 1000 };
 
             // Funky stuff with time countdown, but i _think_ I know what is going on...
             // Buttons (and hence functionality) disabled for now
-            pause_btn.Visible = false;
         }
 
         private void Starttimer_btn_Click(object sender, EventArgs e)
         {
-            string[] TotalSeconds = maskedTextBox.Text.Split(':');
-            int Minutes = Convert.ToInt32(TotalSeconds[0]);
-            int Seconds = Convert.ToInt32(TotalSeconds[1]);
-            TimeLeft = (Minutes * 60) + Seconds;
-
+            string[] TotalSeconds = timetextbox.Text.Split(':');
+            long Minutes = Convert.ToInt64(TotalSeconds[0]);
+            long Seconds = Convert.ToInt64(TotalSeconds[1]);
+            //TimeLeft = (Minutes * 60) + Seconds;
+            long Sixty = Convert.ToInt64(60);
+            TimeLeft = Minutes * Sixty + Seconds;
             // Lock buttons and input
             starttimer_btn.Enabled = false;
-            maskedTextBox.Enabled = false;
+            timetextbox.Enabled = false;
             resettimer_btn.Enabled = false;
 
             // Tick event handling, and timer start
@@ -44,23 +47,23 @@ namespace promoduro_winforms
             timer1.Start();
 
         }
-        private void pause_btn_Click(object sender, EventArgs e)
+        private void Pause_btn_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-
+            starttimer_btn.Enabled = true;
+            resettimer_btn.Enabled = true;
+            timetextbox.Enabled = true;
+            timer1 = new Timer { Interval = 1000 };
         }
 
-        private void resettime_btn_Click(object sender, EventArgs e)
+        private void Resettime_btn_Click(object sender, EventArgs e)
         {
-
+            timetextbox.Text = "25:00";
+            starttimer_btn.Enabled = true;
+            timetextbox.Enabled = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MaskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }
@@ -69,16 +72,20 @@ namespace promoduro_winforms
         {
             if (TimeLeft > 0)
             {
-                TimeLeft -= 1;
+                TimeLeft = TimeLeft - 1;
                 var timespan = TimeSpan.FromSeconds(TimeLeft);
-                maskedTextBox.Text = timespan.ToString(@"mm\:ss");
+                timetextbox.Text = timespan.ToString(@"mm\:ss");
             }
-            else
+            else 
             {
                 timer1.Stop();
                 MessageBox.Show("Time is up!", "Time is up, take a 3 - 5 minute break", MessageBoxButtons.OK);
             }
         }
 
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
