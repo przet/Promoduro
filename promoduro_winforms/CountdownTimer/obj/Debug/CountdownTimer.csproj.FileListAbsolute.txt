@@ -1,0 +1,9 @@
+C:\Programming\Promoduro\promoduro_winforms\CountdownTimer\bin\Debug\CountdownTimer.exe.config
+C:\Programming\Promoduro\promoduro_winforms\CountdownTimer\bin\Debug\CountdownTimer.exe
+C:\Programming\Promoduro\promoduro_winforms\CountdownTimer\bin\Debug\CountdownTimer.pdb
+C:\Programming\Promoduro\promoduro_winforms\CountdownTimer\obj\Debug\CountdownTimer.FrmTimer.resources
+C:\Programming\Promoduro\promoduro_winforms\CountdownTimer\obj\Debug\CountdownTimer.Properties.Resources.resources
+C:\Programming\Promoduro\promoduro_winforms\CountdownTimer\obj\Debug\CountdownTimer.csproj.GenerateResource.cache
+C:\Programming\Promoduro\promoduro_winforms\CountdownTimer\obj\Debug\CountdownTimer.csproj.CoreCompileInputs.cache
+C:\Programming\Promoduro\promoduro_winforms\CountdownTimer\obj\Debug\CountdownTimer.exe
+C:\Programming\Promoduro\promoduro_winforms\CountdownTimer\obj\Debug\CountdownTimer.pdb
