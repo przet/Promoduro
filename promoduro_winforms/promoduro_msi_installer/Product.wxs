@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="promoduro" Language="1033" Version="1.0.0.0" Manufacturer="Philippe Rzetelski" UpgradeCode="db8c843a-0bbf-4191-98ef-134faf80699e">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+        <UI>
+            <UIRef Id="WixUI_Minimal" />
+        </UI>
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="promoduro" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="promoduro_msi_installer" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+        <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+            <!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+            <Component Id="ProductComponent">
+                <File Source="$(var.promoduro_winforms.TargetPath)" />
+            </Component>
+        </ComponentGroup>
+	</Fragment>
+</Wix>

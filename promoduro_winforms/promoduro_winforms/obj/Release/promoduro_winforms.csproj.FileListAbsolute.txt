@@ -1,11 +1,8 @@
-C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\bin\Release\promoduro_winforms.exe.config
-C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\bin\Release\promoduro_winforms.exe
 C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\bin\Release\promoduro_winforms.pdb
 C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Release\promoduro_winforms.Form1.resources
 C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Release\promoduro_winforms.Properties.Resources.resources
 C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Release\promoduro_winforms.csproj.GenerateResource.cache
 C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Release\promoduro_winforms.csproj.CoreCompileInputs.cache
-C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Release\promoduro_winforms.exe
 C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Release\promoduro_winforms.pdb
 N:\Programming\Pro_mod_uro\promoduro_winforms\promoduro_winforms\bin\Release\promoduro_winforms.exe.config
 N:\Programming\Pro_mod_uro\promoduro_winforms\promoduro_winforms\bin\Release\promoduro_winforms.exe
@@ -17,3 +14,8 @@ N:\Programming\Pro_mod_uro\promoduro_winforms\promoduro_winforms\obj\Release\pro
 N:\Programming\Pro_mod_uro\promoduro_winforms\promoduro_winforms\obj\Release\promoduro_winforms.csproj.CoreCompileInputs.cache
 N:\Programming\Pro_mod_uro\promoduro_winforms\promoduro_winforms\obj\Release\promoduro_winforms.exe
 N:\Programming\Pro_mod_uro\promoduro_winforms\promoduro_winforms\obj\Release\promoduro_winforms.pdb
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Release\promoduro_winforms.csprojAssemblyReference.cache
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\bin\Release\promoduro_winforms.dll
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\bin\Release\promoduro_winforms.exe.config
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\bin\Release\promoduro_winforms.exe
+C:\Programming\Promoduro\promoduro_winforms\promoduro_winforms\obj\Release\promoduro_winforms.exe

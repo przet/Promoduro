@@ -1,0 +1,3 @@
+C:\Programming\Promoduro\promoduro_winforms\promoduro_msi_installer\bin\Release\cab1.cab
+C:\Programming\Promoduro\promoduro_winforms\promoduro_msi_installer\bin\Release\promoduro_msi_installer.msi
+C:\Programming\Promoduro\promoduro_winforms\promoduro_msi_installer\bin\Release\promoduro_msi_installer.wixpdb
