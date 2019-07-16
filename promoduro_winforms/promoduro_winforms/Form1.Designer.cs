@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.starttimer_btn = new System.Windows.Forms.Button();
             this.resettimer_btn = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -38,9 +39,10 @@
             // 
             // starttimer_btn
             // 
-            this.starttimer_btn.Location = new System.Drawing.Point(317, 425);
+            this.starttimer_btn.Location = new System.Drawing.Point(180, 278);
+            this.starttimer_btn.Margin = new System.Windows.Forms.Padding(2);
             this.starttimer_btn.Name = "starttimer_btn";
-            this.starttimer_btn.Size = new System.Drawing.Size(159, 69);
+            this.starttimer_btn.Size = new System.Drawing.Size(87, 37);
             this.starttimer_btn.TabIndex = 0;
             this.starttimer_btn.Text = "Start Timer!";
             this.starttimer_btn.UseVisualStyleBackColor = true;
@@ -48,9 +50,10 @@
             // 
             // resettimer_btn
             // 
-            this.resettimer_btn.Location = new System.Drawing.Point(317, 621);
+            this.resettimer_btn.Location = new System.Drawing.Point(180, 390);
+            this.resettimer_btn.Margin = new System.Windows.Forms.Padding(2);
             this.resettimer_btn.Name = "resettimer_btn";
-            this.resettimer_btn.Size = new System.Drawing.Size(159, 69);
+            this.resettimer_btn.Size = new System.Drawing.Size(87, 37);
             this.resettimer_btn.TabIndex = 1;
             this.resettimer_btn.Text = "Reset Timer";
             this.resettimer_btn.UseVisualStyleBackColor = true;
@@ -63,9 +66,10 @@
             // 
             // pause_btn
             // 
-            this.pause_btn.Location = new System.Drawing.Point(317, 521);
+            this.pause_btn.Location = new System.Drawing.Point(180, 334);
+            this.pause_btn.Margin = new System.Windows.Forms.Padding(2);
             this.pause_btn.Name = "pause_btn";
-            this.pause_btn.Size = new System.Drawing.Size(159, 69);
+            this.pause_btn.Size = new System.Drawing.Size(87, 37);
             this.pause_btn.TabIndex = 3;
             this.pause_btn.Text = "Pause Timer";
             this.pause_btn.UseVisualStyleBackColor = true;
@@ -73,28 +77,38 @@
             // 
             // timetextbox
             // 
+            this.timetextbox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.timetextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.timetextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timetextbox.Location = new System.Drawing.Point(199, 229);
+            this.timetextbox.Location = new System.Drawing.Point(113, 55);
+            this.timetextbox.Margin = new System.Windows.Forms.Padding(2);
             this.timetextbox.Multiline = true;
             this.timetextbox.Name = "timetextbox";
-            this.timetextbox.Size = new System.Drawing.Size(400, 175);
+            this.timetextbox.Size = new System.Drawing.Size(220, 97);
             this.timetextbox.TabIndex = 5;
             this.timetextbox.Text = "00:00";
             this.timetextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.BackgroundImage = global::promoduro_winforms.Properties.Resources.istockphoto_466175630_612x612;
-            this.ClientSize = new System.Drawing.Size(840, 837);
+            this.BackgroundImage = global::promoduro_winforms.Properties.Resources.giphy;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(458, 453);
             this.Controls.Add(this.timetextbox);
             this.Controls.Add(this.pause_btn);
             this.Controls.Add(this.resettimer_btn);
             this.Controls.Add(this.starttimer_btn);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(474, 492);
+            this.MinimumSize = new System.Drawing.Size(474, 492);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Promoduro";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
