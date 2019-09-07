@@ -99,15 +99,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\wolf_40-wallpaper-3840x1600.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\126633.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\126684.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\istockphoto-466175630-612x612.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +115,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\code-coding-programmer-305278.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\35611264264_42fbb8164c_b.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magician-3047235_960_720.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dark-973772_960_720.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

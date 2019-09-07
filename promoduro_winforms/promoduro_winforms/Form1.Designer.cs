@@ -35,6 +35,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pause_btn = new System.Windows.Forms.Button();
             this.timetextbox = new System.Windows.Forms.TextBox();
+            this.background_cycle_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // starttimer_btn
@@ -89,14 +90,26 @@
             this.timetextbox.Text = "00:00";
             this.timetextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // background_cycle_button
+            // 
+            this.background_cycle_button.Font = new System.Drawing.Font("Liberation Mono", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.background_cycle_button.Location = new System.Drawing.Point(436, 433);
+            this.background_cycle_button.Name = "background_cycle_button";
+            this.background_cycle_button.Size = new System.Drawing.Size(21, 19);
+            this.background_cycle_button.TabIndex = 6;
+            this.background_cycle_button.Text = "cb";
+            this.background_cycle_button.UseVisualStyleBackColor = true;
+            this.background_cycle_button.Click += new System.EventHandler(this.Background_cycle_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.BackgroundImage = global::promoduro_winforms.Properties.Resources.giphy;
+            this.BackgroundImage = global::promoduro_winforms.Properties.Resources.dark_973772_960_720;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(458, 453);
+            this.Controls.Add(this.background_cycle_button);
             this.Controls.Add(this.timetextbox);
             this.Controls.Add(this.pause_btn);
             this.Controls.Add(this.resettimer_btn);
@@ -122,6 +135,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button pause_btn;
         private System.Windows.Forms.TextBox timetextbox;
+        private System.Windows.Forms.Button background_cycle_button;
     }
 }
 

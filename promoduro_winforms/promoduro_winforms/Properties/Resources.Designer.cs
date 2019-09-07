@@ -63,9 +63,9 @@ namespace promoduro_winforms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _126633 {
+        internal static System.Drawing.Bitmap _35611264264_42fbb8164c_b {
             get {
-                object obj = ResourceManager.GetObject("126633", resourceCulture);
+                object obj = ResourceManager.GetObject("35611264264_42fbb8164c_b", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,19 @@ namespace promoduro_winforms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _126684 {
+        internal static System.Drawing.Bitmap code_coding_programmer_305278 {
             get {
-                object obj = ResourceManager.GetObject("126684", resourceCulture);
+                object obj = ResourceManager.GetObject("code-coding-programmer-305278", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dark_973772_960_720 {
+            get {
+                object obj = ResourceManager.GetObject("dark-973772_960_720", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +113,19 @@ namespace promoduro_winforms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap wolf_40_wallpaper_3840x1600 {
+        internal static System.Drawing.Bitmap magician_3047235_960_720 {
             get {
-                object obj = ResourceManager.GetObject("wolf_40-wallpaper-3840x1600", resourceCulture);
+                object obj = ResourceManager.GetObject("magician-3047235_960_720", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mindset_programmer_machine_learni {
+            get {
+                object obj = ResourceManager.GetObject("mindset-programmer-machine-learni", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

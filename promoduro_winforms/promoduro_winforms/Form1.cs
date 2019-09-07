@@ -94,6 +94,37 @@ namespace promoduro_winforms
         {
 
         }
+
+        int Counter_Background_cycle_button_click = 1;
+        private void Background_cycle_button_Click(object sender, EventArgs e)
+        {
+            switch (Counter_Background_cycle_button_click)
+            {
+                case 1:
+                    this.BackgroundImage = Properties.Resources._35611264264_42fbb8164c_b;
+                    Counter_Background_cycle_button_click++;
+                    break;
+
+                case 2:
+                    this.BackgroundImage = Properties.Resources.code_coding_programmer_305278;
+                    Counter_Background_cycle_button_click++;
+                    break;
+
+                case 3:
+                    this.BackgroundImage = Properties.Resources.giphy;
+                    Counter_Background_cycle_button_click++;
+                    break;
+                case 4:
+                    this.BackgroundImage = Properties.Resources.dark_973772_960_720;
+                    Counter_Background_cycle_button_click++;
+                    break;
+                case 5:
+                    this.BackgroundImage = Properties.Resources.magician_3047235_960_720;
+                    Counter_Background_cycle_button_click = 1;
+                    break;
+            }
+                
+        }
     }
     public class Class1
     {
