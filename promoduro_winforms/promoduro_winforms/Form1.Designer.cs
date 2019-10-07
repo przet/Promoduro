@@ -94,7 +94,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.BackgroundImage = global::promoduro_winforms.Properties.Resources.giphy;
+            this.BackgroundImage = global::promoduro_winforms.Properties.Resources.tomato_779329_1280;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(458, 453);
             this.Controls.Add(this.timetextbox);

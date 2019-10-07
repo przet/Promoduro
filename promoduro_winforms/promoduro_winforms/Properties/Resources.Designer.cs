@@ -103,6 +103,16 @@ namespace promoduro_winforms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap tomato_779329_1280 {
+            get {
+                object obj = ResourceManager.GetObject("tomato-779329_1280", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap wolf_40_wallpaper_3840x1600 {
             get {
                 object obj = ResourceManager.GetObject("wolf_40-wallpaper-3840x1600", resourceCulture);
