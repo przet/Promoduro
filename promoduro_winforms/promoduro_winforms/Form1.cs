@@ -39,6 +39,8 @@ namespace promoduro_winforms
             starttimer_btn.Enabled = false;
             timetextbox.Enabled = false;
             resettimer_btn.Enabled = false;
+            if (!pause_btn.Enabled)
+                pause_btn.Enabled = true;
 
             // Tick event handling, and timer start
             timer1.Tick += new EventHandler(Timer1_Tick);
