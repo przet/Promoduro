@@ -28,7 +28,7 @@ namespace promoduro_winforms
 #if DEBUG
             timetextbox.Text = "00:05";
 #else
-            timetextbox.Text = "25:00";
+            timetextbox.Text = "50:00";
 #endif
 
             timer1 = new Timer { Interval = 1000 };
@@ -69,25 +69,15 @@ namespace promoduro_winforms
 #if DEBUG
             timetextbox.Text = "00:05";
 #else
-            timetextbox.Text = "25:00";
+            timetextbox.Text = "50:00";
 #endif
             else
             {
-                if (_5_MinBreakCount <= 3) 
 #if DEBUG
             timetextbox.Text = "00:01";
 #else
-            timetextbox.Text = "5:00";
+            timetextbox.Text = "17:00";
 #endif
-                else
-                {
-                    _5_MinBreakCount = 0;
-#if DEBUG
-            timetextbox.Text = "00:03";
-#else
-            timetextbox.Text = "15:00";
-#endif
-                }
             }
 
             starttimer_btn.Enabled = true;
@@ -123,10 +113,8 @@ namespace promoduro_winforms
                     Class1.FlashWindow(this.Handle, false);
                 }
 
-                if (StopCount % 2 != 0 && _5_MinBreakCount <= 3)
-                    MessageBox.Show("Time is up, take a 5 minute break", "Time is up!", MessageBoxButtons.OK);
-                else if (StopCount % 2 != 0)
-                    MessageBox.Show("Time is up, take a 15 minute break", "15 min break time!", MessageBoxButtons.OK);
+                if (StopCount % 2 != 0) 
+                    MessageBox.Show("Time is up, take a 17 minute break", "Time is up!", MessageBoxButtons.OK);
                 else if (StopCount % 2 == 0) 
                     MessageBox.Show("Break time is over! Get ready for another session!", " Break Time is up!", MessageBoxButtons.OK);
                 
