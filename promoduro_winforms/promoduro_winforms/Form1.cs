@@ -188,20 +188,30 @@ namespace promoduro_winforms
 
         private void ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            timetextbox.Text = m25;
-            mStartingTimeText = m25;
+            // Guard against stop count reset if already on 25 min
+            // E.g user could click 25 just because it is there. 
+            if (mStartingTimeText != m25)
+            {
+                timetextbox.Text = m25;
+                mStartingTimeText = m25;
 
-            // Reset stop count
-            StopCount = 0;
+                // Reset stop count
+                StopCount = 0;
+            }
         }
 
         private void ToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            timetextbox.Text = m50;
-            mStartingTimeText = m50;
+            // Guard against stop count reset if already on 50 min
+            // E.g user could click 50 just because it is there. 
+            if (mStartingTimeText != m50)
+            {
+                timetextbox.Text = m50;
+                mStartingTimeText = m50;
 
-            // Reset stop count
-            StopCount = 0;
+                // Reset stop count
+                StopCount = 0;
+            }
         }
     }
     public class Class1
