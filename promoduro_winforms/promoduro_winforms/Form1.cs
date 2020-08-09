@@ -47,6 +47,8 @@ namespace promoduro_winforms
             InitializeComponent();
             timetextbox.Text = m50;
             mStartingTimeText = timetextbox.Text;
+            toolStripMenuItem3.CheckState = CheckState.Checked;
+            toolStripMenuItem2.CheckState = CheckState.Unchecked;
 
             timer1 = new Timer { Interval = 1000 };
             contextMenuStrip1 = new ContextMenuStrip();
@@ -199,6 +201,8 @@ namespace promoduro_winforms
 
                 if (result != System.Windows.Forms.DialogResult.Cancel)
                 {
+                    toolStripMenuItem2.CheckState = CheckState.Checked;
+                    toolStripMenuItem3.CheckState = CheckState.Unchecked;
                     timetextbox.Text = m25;
                     mStartingTimeText = m25;
 
@@ -221,6 +225,8 @@ namespace promoduro_winforms
 
                 if (result != System.Windows.Forms.DialogResult.Cancel)
                 {
+                    toolStripMenuItem3.CheckState = CheckState.Checked;
+                    toolStripMenuItem2.CheckState = CheckState.Unchecked;
                     timetextbox.Text = m50;
                     mStartingTimeText = m50;
                     // Reset stop count
