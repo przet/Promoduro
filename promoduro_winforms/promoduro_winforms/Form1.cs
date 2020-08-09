@@ -237,7 +237,9 @@ namespace promoduro_winforms
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(" Version: 1.2.0-beta \n Issues, bugs, pull requests: https://github.com/przet/Promoduro.",
+
+            string aboutStr = "20200809-dev";
+            MessageBox.Show(aboutStr + "\n Issues, bugs, pull requests: https://github.com/przet/Promoduro.",
                 "About Promoduro...",
                  MessageBoxButtons.OK);
         }
