@@ -192,11 +192,19 @@ namespace promoduro_winforms
             // E.g user could click 25 just because it is there. 
             if (mStartingTimeText != m25)
             {
-                timetextbox.Text = m25;
-                mStartingTimeText = m25;
+                DialogResult result = MessageBox.Show("Leaving 50 min state...this will reset all break counts.",
+                    "Swtiching to 25 min state...",
+                     MessageBoxButtons.OKCancel);
 
-                // Reset stop count
-                StopCount = 0;
+                if (result != System.Windows.Forms.DialogResult.Cancel)
+                {
+                    timetextbox.Text = m25;
+                    mStartingTimeText = m25;
+
+                    // Reset stop count
+                    StopCount = 0;
+                }
+
             }
         }
 
@@ -206,11 +214,18 @@ namespace promoduro_winforms
             // E.g user could click 50 just because it is there. 
             if (mStartingTimeText != m50)
             {
-                timetextbox.Text = m50;
-                mStartingTimeText = m50;
+                DialogResult result = MessageBox.Show("Leaving 25 min state...this will reset all break counts.",
+                    "Swtiching to 50 min state...",
+                     MessageBoxButtons.OKCancel);
 
-                // Reset stop count
-                StopCount = 0;
+                if (result != System.Windows.Forms.DialogResult.Cancel)
+                {
+                    timetextbox.Text = m50;
+                    mStartingTimeText = m50;
+                    // Reset stop count
+                    StopCount = 0;
+                }
+
             }
         }
     }
