@@ -54,6 +54,7 @@ namespace promoduro_winforms
             this.ContextMenuStrip = contextMenuStrip1;
             contextMenuStrip1.Items.Add(toolStripMenuItem2);
             contextMenuStrip1.Items.Add(toolStripMenuItem3);
+            contextMenuStrip1.Items.Add(aboutToolStripMenuItem);
         }
 
         private void cms_opening(object sender, CancelEventArgs e)
@@ -227,6 +228,13 @@ namespace promoduro_winforms
                 }
 
             }
+        }
+
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(" Version: 1.2.0-beta \n Issues, bugs, pull requests: https://github.com/przet/Promoduro.",
+                "About Promoduro...",
+                 MessageBoxButtons.OK);
         }
     }
     public class Class1
