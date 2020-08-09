@@ -21,17 +21,43 @@ namespace promoduro_winforms
     {
         private long TimeLeft;
         private int StopCount = 0;
-        private int _5_MinBreakCount = 0;
+        private string mStartingTimeText;
+        private string m50;
+        private string m17;
+        private string m25;
+        private string m10;
+        private string m30;
+
         public Form1()
         {
+            #if DEBUG
+            m50 = "00:05";
+            m17 = "00:03";
+            m25 = "00:02";
+            m10 = "00:01";
+            m30 = "00:04";
+            #else
+            m50 = "50:00";
+            m17 = "17:00";
+            m25 = "25:00";
+            m10 = "10:00";
+            m30 = "30:00";
+            #endif
+
             InitializeComponent();
-#if DEBUG
-            timetextbox.Text = "00:05";
-#else
-            timetextbox.Text = "50:00";
-#endif
+            timetextbox.Text = m50;
+            mStartingTimeText = timetextbox.Text;
 
             timer1 = new Timer { Interval = 1000 };
+            contextMenuStrip1 = new ContextMenuStrip();
+            contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(cms_opening);
+            this.ContextMenuStrip = contextMenuStrip1;
+            contextMenuStrip1.Items.Add(toolStripMenuItem2);
+            contextMenuStrip1.Items.Add(toolStripMenuItem3);
+        }
+
+        private void cms_opening(object sender, CancelEventArgs e)
+        {
         }
 
         private void Starttimer_btn_Click(object sender, EventArgs e)
@@ -65,19 +91,40 @@ namespace promoduro_winforms
 
         private void Resettime_btn_Click(object sender, EventArgs e)
         {
-            if (StopCount % 2 == 0)
-#if DEBUG
-            timetextbox.Text = "00:05";
-#else
-            timetextbox.Text = "50:00";
-#endif
-            else
+            if (mStartingTimeText == m50)
             {
-#if DEBUG
-            timetextbox.Text = "00:01";
-#else
-            timetextbox.Text = "17:00";
-#endif
+                if (StopCount % 2 == 0)
+                {
+                    timetextbox.Text = m50;
+                }
+                else
+                {
+                    timetextbox.Text = m17;
+                }
+
+            }
+
+            if (mStartingTimeText == m25)
+            {
+                if (StopCount % 2 == 0)
+                {
+                    timetextbox.Text = m25;
+                }
+                else if (StopCount % 2 !=0 && StopCount != 7)
+                {
+                    timetextbox.Text = m10;
+                }
+                else if (StopCount == 7)
+                {
+                    timetextbox.Text = m30;
+                }
+
+                if (StopCount == 8)
+                {
+                    //Reset stop count
+                    StopCount = 0;
+                }
+
             }
 
             starttimer_btn.Enabled = true;
@@ -98,12 +145,10 @@ namespace promoduro_winforms
                 var timespan = TimeSpan.FromSeconds(TimeLeft);
                 timetextbox.Text = timespan.ToString(@"mm\:ss");
             }
-            else 
+            else
             {
                 timer1.Stop();
                 StopCount++;
-                if (StopCount % 2 != 0)
-                    _5_MinBreakCount++;
 
                 pause_btn.Enabled = false;
                 resettimer_btn.Enabled = true;
@@ -113,17 +158,50 @@ namespace promoduro_winforms
                     Class1.FlashWindow(this.Handle, false);
                 }
 
-                if (StopCount % 2 != 0) 
-                    MessageBox.Show("Time is up, take a 17 minute break", "Time is up!", MessageBoxButtons.OK);
-                else if (StopCount % 2 == 0) 
-                    MessageBox.Show("Break time is over! Get ready for another session!", " Break Time is up!", MessageBoxButtons.OK);
-                
+                if (mStartingTimeText == m50)
+                {
+                    if (StopCount % 2 != 0)
+                        MessageBox.Show("Time is up, take a 17 minute break", "Time is up!", MessageBoxButtons.OK);
+                    else if (StopCount % 2 == 0)
+                        MessageBox.Show("Break time is over! Get ready for another session!", " Break Time is up!", MessageBoxButtons.OK);
+                }
+
+                if (mStartingTimeText == m25)
+                {
+                    if (StopCount % 2 != 0 && StopCount != 7)
+                        MessageBox.Show("Time is up, take a 10 minute break", "Time is up!", MessageBoxButtons.OK);
+                    else if (StopCount % 2 == 0)
+                        MessageBox.Show("Break time is over! Get ready for another session!", " Break Time is up!", MessageBoxButtons.OK);
+                    else if (StopCount == 7)
+                        MessageBox.Show("Time is up, take a 30 minute break", "Time is up!", MessageBoxButtons.OK);
+
+                }
+
+
             }
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            timetextbox.Text = m25;
+            mStartingTimeText = m25;
+
+            // Reset stop count
+            StopCount = 0;
+        }
+
+        private void ToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            timetextbox.Text = m50;
+            mStartingTimeText = m50;
+
+            // Reset stop count
+            StopCount = 0;
         }
     }
     public class Class1
