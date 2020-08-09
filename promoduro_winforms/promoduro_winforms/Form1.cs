@@ -21,12 +21,12 @@ namespace promoduro_winforms
     {
         private long TimeLeft;
         private int StopCount = 0;
-        private string mStartingTimeText;
         private string m50;
         private string m17;
         private string m25;
         private string m10;
         private string m30;
+        private bool mPomodoroStateIs50;
 
         public Form1()
         {
@@ -46,7 +46,7 @@ namespace promoduro_winforms
 
             InitializeComponent();
             timetextbox.Text = m50;
-            mStartingTimeText = timetextbox.Text;
+            mPomodoroStateIs50 = true;
             toolStripMenuItem3.CheckState = CheckState.Checked;
             toolStripMenuItem2.CheckState = CheckState.Unchecked;
 
@@ -94,7 +94,7 @@ namespace promoduro_winforms
 
         private void Resettime_btn_Click(object sender, EventArgs e)
         {
-            if (mStartingTimeText == m50)
+            if (mPomodoroStateIs50)
             {
                 if (StopCount % 2 == 0)
                 {
@@ -106,8 +106,7 @@ namespace promoduro_winforms
                 }
 
             }
-
-            if (mStartingTimeText == m25)
+            else
             {
                 if (StopCount % 2 == 0)
                 {
@@ -161,15 +160,14 @@ namespace promoduro_winforms
                     Class1.FlashWindow(this.Handle, false);
                 }
 
-                if (mStartingTimeText == m50)
+                if (mPomodoroStateIs50)
                 {
                     if (StopCount % 2 != 0)
                         MessageBox.Show("Time is up, take a 17 minute break", "Time is up!", MessageBoxButtons.OK);
                     else if (StopCount % 2 == 0)
                         MessageBox.Show("Break time is over! Get ready for another session!", " Break Time is up!", MessageBoxButtons.OK);
                 }
-
-                if (mStartingTimeText == m25)
+                else 
                 {
                     if (StopCount % 2 != 0 && StopCount != 7)
                         MessageBox.Show("Time is up, take a 10 minute break", "Time is up!", MessageBoxButtons.OK);
@@ -193,7 +191,7 @@ namespace promoduro_winforms
         {
             // Guard against stop count reset if already on 25 min
             // E.g user could click 25 just because it is there. 
-            if (mStartingTimeText != m25)
+            if (mPomodoroStateIs50)
             {
                 DialogResult result = MessageBox.Show("Leaving 50 min state...this will reset all break counts.",
                     "Swtiching to 25 min state...",
@@ -204,7 +202,7 @@ namespace promoduro_winforms
                     toolStripMenuItem2.CheckState = CheckState.Checked;
                     toolStripMenuItem3.CheckState = CheckState.Unchecked;
                     timetextbox.Text = m25;
-                    mStartingTimeText = m25;
+                    mPomodoroStateIs50 = false;
 
                     // Reset stop count
                     StopCount = 0;
@@ -217,7 +215,7 @@ namespace promoduro_winforms
         {
             // Guard against stop count reset if already on 50 min
             // E.g user could click 50 just because it is there. 
-            if (mStartingTimeText != m50)
+            if (!mPomodoroStateIs50)
             {
                 DialogResult result = MessageBox.Show("Leaving 25 min state...this will reset all break counts.",
                     "Swtiching to 50 min state...",
@@ -228,7 +226,8 @@ namespace promoduro_winforms
                     toolStripMenuItem3.CheckState = CheckState.Checked;
                     toolStripMenuItem2.CheckState = CheckState.Unchecked;
                     timetextbox.Text = m50;
-                    mStartingTimeText = m50;
+                    mPomodoroStateIs50 = true;
+
                     // Reset stop count
                     StopCount = 0;
                 }
