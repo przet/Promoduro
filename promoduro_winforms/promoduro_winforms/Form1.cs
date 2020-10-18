@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace promoduro_winforms
 {
@@ -21,25 +22,30 @@ namespace promoduro_winforms
     {
         private long TimeLeft;
         private int StopCount = 0;
-        private string m50;
-        private string m17;
+        private string m50; 
+        private string m17; // 50 min break length
         private string m25;
-        private string m10;
-        private string m30;
+        private string m35;
+        private string m10; // 25 and 35 min break length
+        private string m30; // 25 and 35 min longer break lenght
         private bool mPomodoroStateIs50;
+        private bool mPomodoroStateIs35;
+        private bool mPomodoroStateIs25;
 
         public Form1()
         {
             #if DEBUG
-            m50 = "00:05";
-            m17 = "00:03";
-            m25 = "00:02";
+            m50 = "00:06";
+            m17 = "00:05";
+            m25 = "00:03";
+            m35 = "00:04";
             m10 = "00:01";
-            m30 = "00:04";
+            m30 = "00:02";
             #else
             m50 = "50:00";
             m17 = "17:00";
             m25 = "25:00";
+            m35 = "35:00";
             m10 = "10:00";
             m30 = "30:00";
             #endif
@@ -47,16 +53,20 @@ namespace promoduro_winforms
             InitializeComponent();
             timetextbox.Text = m50;
             mPomodoroStateIs50 = true;
-            toolStripMenuItem3.CheckState = CheckState.Checked;
-            toolStripMenuItem2.CheckState = CheckState.Unchecked;
+            mPomodoroStateIs35 = false;
+            mPomodoroStateIs25 = false;
+            toolStripMenu_50min.CheckState = CheckState.Checked;
+            toolStripMenu_25min.CheckState = CheckState.Unchecked;
+            toolStripMenu_35min.CheckState = CheckState.Unchecked;
 
             timer1 = new Timer { Interval = 1000 };
             contextMenuStrip1 = new ContextMenuStrip();
             contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(cms_opening);
             this.ContextMenuStrip = contextMenuStrip1;
-            contextMenuStrip1.Items.Add(toolStripMenuItem2);
-            contextMenuStrip1.Items.Add(toolStripMenuItem3);
-            contextMenuStrip1.Items.Add(aboutToolStripMenuItem);
+            contextMenuStrip1.Items.Add(toolStripMenu_25min);
+            contextMenuStrip1.Items.Add(toolStripMenu_35min);
+            contextMenuStrip1.Items.Add(toolStripMenu_50min);
+            contextMenuStrip1.Items.Add(toolStripMenu_About);
         }
 
         private void cms_opening(object sender, CancelEventArgs e)
@@ -96,6 +106,7 @@ namespace promoduro_winforms
         {
             if (mPomodoroStateIs50)
             {
+                Debug.Assert(!mPomodoroStateIs35 && !mPomodoroStateIs25, "pomodoro state is 50 _and_ either 35 or 25");
                 if (StopCount % 2 == 0)
                 {
                     timetextbox.Text = m50;
@@ -106,11 +117,23 @@ namespace promoduro_winforms
                 }
 
             }
-            else
+            else 
             {
+                Debug.Assert(!(mPomodoroStateIs25 && mPomodoroStateIs35), "pomodoro state is 25 _and_ 35");
                 if (StopCount % 2 == 0)
                 {
-                    timetextbox.Text = m25;
+                    if (mPomodoroStateIs25)
+                    {
+                        timetextbox.Text = m25;
+                    }
+                    else if (mPomodoroStateIs35)
+                    {
+                        timetextbox.Text = m35;
+                    }
+                    else
+                    {
+                        Debug.Assert(1 == 2, "We should not get here!");
+                    }
                 }
                 else if (StopCount % 2 !=0 && StopCount != 7)
                 {
@@ -162,19 +185,37 @@ namespace promoduro_winforms
 
                 if (mPomodoroStateIs50)
                 {
+                    Debug.Assert(!mPomodoroStateIs25 && !mPomodoroStateIs35, "pomodoro state is 50 _and_ either 25 or 35");
                     if (StopCount % 2 != 0)
-                        MessageBox.Show("Time is up, take a 17 minute break", "Time is up!", MessageBoxButtons.OK);
+                        MessageBox.Show("50 minutes is up, take a 17 minute break", "Time is up!", MessageBoxButtons.OK);
                     else if (StopCount % 2 == 0)
-                        MessageBox.Show("Break time is over! Get ready for another session!", " Break Time is up!", MessageBoxButtons.OK);
+                        MessageBox.Show("17 minute break time is over! Get ready for another session!", " Break Time is up!", MessageBoxButtons.OK);
                 }
                 else 
                 {
+                    Debug.Assert(!(mPomodoroStateIs25 && mPomodoroStateIs35), "pomodoro state is 25 _and_ 35");
                     if (StopCount % 2 != 0 && StopCount != 7)
-                        MessageBox.Show("Time is up, take a 10 minute break", "Time is up!", MessageBoxButtons.OK);
+                    {
+                        if (mPomodoroStateIs25)
+                            MessageBox.Show("25 minutes is up, take a 10 minute break", "Time is up!", MessageBoxButtons.OK);
+                        else
+                            MessageBox.Show("35 minutes is up, take a 10 minute break", "Time is up!", MessageBoxButtons.OK);
+
+                    }
                     else if (StopCount % 2 == 0)
-                        MessageBox.Show("Break time is over! Get ready for another session!", " Break Time is up!", MessageBoxButtons.OK);
+                    {
+                        MessageBox.Show("10 minute break time is over! Get ready for another session!", " Break Time is up!", MessageBoxButtons.OK);
+
+                    }
                     else if (StopCount == 7)
-                        MessageBox.Show("Time is up, take a 30 minute break", "Time is up!", MessageBoxButtons.OK);
+                    {
+                        if (mPomodoroStateIs25)
+                            MessageBox.Show("25 minutes is up, take a 30 minute break", "Time is up!", MessageBoxButtons.OK);
+                        else
+                            MessageBox.Show(" minutes is up, take a 30 minute break", "Time is up!", MessageBoxButtons.OK);
+
+
+                    }
 
                 }
 
@@ -191,18 +232,35 @@ namespace promoduro_winforms
         {
             // Guard against stop count reset if already on 25 min
             // E.g user could click 25 just because it is there. 
-            if (mPomodoroStateIs50)
+            if (!mPomodoroStateIs25)
             {
-                DialogResult result = MessageBox.Show("Leaving 50 min state...this will reset all break counts.",
-                    "Swtiching to 25 min state...",
-                     MessageBoxButtons.OKCancel);
+                Debug.Assert(!(mPomodoroStateIs35 && mPomodoroStateIs50), "pomodoro state is both 50 _and_ 35");
+
+                DialogResult result;
+                if (mPomodoroStateIs50)
+                {
+                    result = MessageBox.Show("Leaving 50 min state...this will reset all break counts.",
+                             "Swtiching to a new time state...",
+                             MessageBoxButtons.OKCancel);
+                }
+                else
+                {
+                    result = MessageBox.Show("Leaving 35 min state...this will reset all break counts.",
+                             "Swtiching to new time state...",
+                             MessageBoxButtons.OKCancel);
+
+                }
 
                 if (result != System.Windows.Forms.DialogResult.Cancel)
                 {
-                    toolStripMenuItem2.CheckState = CheckState.Checked;
-                    toolStripMenuItem3.CheckState = CheckState.Unchecked;
+                    toolStripMenu_25min.CheckState = CheckState.Checked;
+                    toolStripMenu_50min.CheckState = CheckState.Unchecked;
+                    toolStripMenu_35min.CheckState = CheckState.Unchecked;
                     timetextbox.Text = m25;
+                    mPomodoroStateIs25 = true;
                     mPomodoroStateIs50 = false;
+                    mPomodoroStateIs35 = false;
+                    Debug.Assert(mPomodoroStateIs25 && !(mPomodoroStateIs50 || mPomodoroStateIs35));
 
                     // Reset stop count
                     StopCount = 0;
@@ -217,16 +275,77 @@ namespace promoduro_winforms
             // E.g user could click 50 just because it is there. 
             if (!mPomodoroStateIs50)
             {
-                DialogResult result = MessageBox.Show("Leaving 25 min state...this will reset all break counts.",
-                    "Swtiching to 50 min state...",
-                     MessageBoxButtons.OKCancel);
+
+                Debug.Assert(!(mPomodoroStateIs25 && mPomodoroStateIs35), "pomodoro state is both 25 _and_ 35");
+
+                DialogResult result;
+                if (mPomodoroStateIs25)
+                {
+                    result = MessageBox.Show("Leaving 25 min state...this will reset all break counts.",
+                             "Swtiching to a new time state...",
+                             MessageBoxButtons.OKCancel);
+
+                }
+                else
+                {
+                    result = MessageBox.Show("Leaving 35 min state...this will reset all break counts.",
+                             "Swtiching to a new time state...",
+                             MessageBoxButtons.OKCancel);
+                }
+                
 
                 if (result != System.Windows.Forms.DialogResult.Cancel)
                 {
-                    toolStripMenuItem3.CheckState = CheckState.Checked;
-                    toolStripMenuItem2.CheckState = CheckState.Unchecked;
+                    toolStripMenu_50min.CheckState = CheckState.Checked;
+                    toolStripMenu_25min.CheckState = CheckState.Unchecked;
+                    toolStripMenu_35min.CheckState = CheckState.Unchecked;
                     timetextbox.Text = m50;
                     mPomodoroStateIs50 = true;
+                    mPomodoroStateIs35 = false;
+                    mPomodoroStateIs25 = false;
+                    Debug.Assert(mPomodoroStateIs50 && !(mPomodoroStateIs25 || mPomodoroStateIs35));
+
+                    // Reset stop count
+                    StopCount = 0;
+                }
+
+            }
+        }
+        private void ToolStripMenu_35min_Click(object sender, EventArgs e)
+        {
+            // Guard against stop count reset if already on 35 min
+            // E.g user could click 35 just because it is there. 
+            if (!mPomodoroStateIs35)
+            {
+
+                Debug.Assert(!(mPomodoroStateIs25 && mPomodoroStateIs50), "pomodoro state is both 25 _and_ 50");
+
+                DialogResult result;
+                if (mPomodoroStateIs25)
+                {
+                    result = MessageBox.Show("Leaving 25 min state...this will reset all break counts.",
+                             "Swtiching to a new time state...",
+                             MessageBoxButtons.OKCancel);
+
+                }
+                else
+                {
+                    result = MessageBox.Show("Leaving 50 min state...this will reset all break counts.",
+                             "Swtiching to a new time state...",
+                             MessageBoxButtons.OKCancel);
+                }
+                
+
+                if (result != System.Windows.Forms.DialogResult.Cancel)
+                {
+                    toolStripMenu_50min.CheckState = CheckState.Unchecked;
+                    toolStripMenu_25min.CheckState = CheckState.Unchecked;
+                    toolStripMenu_35min.CheckState = CheckState.Checked;
+                    timetextbox.Text = m35;
+                    mPomodoroStateIs35 = true;
+                    mPomodoroStateIs50 = false;
+                    mPomodoroStateIs25 = false;
+                    Debug.Assert(mPomodoroStateIs35 && !(mPomodoroStateIs25 || mPomodoroStateIs50));
 
                     // Reset stop count
                     StopCount = 0;
@@ -235,10 +354,11 @@ namespace promoduro_winforms
             }
         }
 
+
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            string aboutStr = "20200809-dev";
+            string aboutStr = "20201018-dev";
             MessageBox.Show(aboutStr + "\n Issues, bugs, pull requests: https://github.com/przet/Promoduro.",
                 "About Promoduro...",
                  MessageBoxButtons.OK);
